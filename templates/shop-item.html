@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shop Item - Shop-API</title>
+        {% include 'header_style.html' %}
+    </head>
+    <body>
+        <!-- Related items section-->
+        <section class="py-5 bg-light">
+            <div class="container px-4 px-lg-5 mt-5">
+                <h2 class="fw-bolder mb-4">{{ product['title'] }}</h2>
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-md-6">
+                        <!-- Product image-->
+                        <img class="card-img-top mb-5 mb-md-0" src="{{ product['image'] }}" alt="{{ product['title'] }}" />
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">{{ product['title'] }}</h5>
+                                <!-- Product reviews-->
+                                <div class="d-flex justify-content-center small text-warning mb-2">
+                                    {% for _ in range(5) %}
+                                    <div class="bi-star-fill"></div>
+                                    {% endfor %}
+                                </div>
+                                <!-- Product price-->
+                                <span class="text-muted text-decoration-line-through">${{ (product['price'] * 1.1) | round(2) }}</span>
+                                ${{ product['price'] }}
+                                <!-- Product description-->
+                                <p class="mt-3">{{ product['description'] }}</p>
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center">
+                                <a class="btn btn-outline-dark mt-auto" href="{{ url_for('checkout', id=product['id']) }}">Checkout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+        </footer>
+        {% include 'footer_script.html' %}
+    </body>
+</html>
